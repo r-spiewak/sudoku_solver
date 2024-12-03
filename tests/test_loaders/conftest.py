@@ -51,10 +51,10 @@ def valid_json_file(tmp_path, json_puzzle):
     return file_path
 
 
-@pytest.fixture
-def invalid_json_file(tmp_path):
-    """An invalid puzzle in a valid .json file."""
-    file_path = tmp_path / "invalid_puzzle.json"
-    with open(file_path, "w") as f:
-        f.write('{"puzzle": "not a puzzle"}')
-    return file_path
+# @pytest.fixture
+# def invalid_json_file(tmp_path):
+#     """An invalid puzzle in a valid .json file."""
+#     file_path = tmp_path / "invalid_puzzle.json"
+#     with open(file_path, "w") as f:
+#         f.write('{"puzzle": "not a puzzle"}')
+#     return file_path
