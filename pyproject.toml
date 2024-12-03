@@ -9,7 +9,6 @@ packages = [{include = "sudoku_solver", from = "src"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 typer = "^0.12.3"
-z3 = "^0.2.0"
 z3-solver = "^4.13.3.0"
 
 [tool.poetry.group.dev.dependencies]
