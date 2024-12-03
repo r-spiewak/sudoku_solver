@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from python_template.logger import LoggerMixin
+from sudoku_solver.logger import LoggerMixin
 
 
 @pytest.fixture
