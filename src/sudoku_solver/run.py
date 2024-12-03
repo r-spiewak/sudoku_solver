@@ -1,5 +1,7 @@
 """Run the script_profits app."""
 
+import time
+
 import typer
 from typing_extensions import Annotated
 
@@ -21,6 +23,7 @@ def main(
     if verbosity > 0:
         print(f"Verbosity: {verbosity}")
         state["verbosity"] = verbosity
+    start_time = time.time()
     # Load puzzle as grid here.
     puzzle_grid = load_puzzle(puzzle)
     print(f"Puzzle: {puzzle_grid}")
@@ -29,6 +32,7 @@ def main(
         print(f"Solved puzzle: {solution}")
     else:
         print("No solution exists.")
+    print(f"Total solution time: {(time.time()-start_time)} s")
     return 0
 
 
