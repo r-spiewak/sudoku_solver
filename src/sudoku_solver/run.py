@@ -3,29 +3,32 @@
 import typer
 from typing_extensions import Annotated
 
+from sudoku_solver.loaders.puzzle_loader import load_puzzle
+from sudoku_solver.solver.sudoku_solver import SudokuSolver
+
 app = typer.Typer()
 state = {"verbosity": 0}
 
 
 @app.command()
 def main(
-    data: Annotated[str, typer.Option(..., "--data", "-d")],
-    percentage: Annotated[int, typer.Option("--percentage", "-p")] = 10,
+    puzzle: Annotated[str, typer.Option(..., "--puzzle", "-p")],
     verbosity: Annotated[
         int, typer.Option("--verbosity", "-v", count=True)
     ] = 0,
 ) -> int:
     """Main function to call the script_profit methods."""
-
-    # Do stuff here.
-    print("It worked!")
     if verbosity > 0:
         print(f"Verbosity: {verbosity}")
         state["verbosity"] = verbosity
-    print(f"data: {data}")
-    print(f"percentage: {percentage}")
-    # return call_function(state, data, percentage)
-    # A comment?
+    # Load puzzle as grid here.
+    puzzle_grid = load_puzzle(puzzle)
+    print(f"Puzzle: {puzzle_grid}")
+    solver = SudokuSolver()
+    if solution := solver.solve(puzzle_grid):
+        print(f"Solved puzzle: {solution}")
+    else:
+        print("No solution exists.")
     return 0
 
 
